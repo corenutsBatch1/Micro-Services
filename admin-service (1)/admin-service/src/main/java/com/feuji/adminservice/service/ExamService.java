@@ -71,6 +71,11 @@ public class ExamService {
 		System.out.println(code);
 		return 	exam.getCreatePaper().getQuestions().stream().filter((q)->q.getSubject().getId()==sid).collect(Collectors.toSet());
 	}
+	public Set<Question> getAllQuestionsByCode(String code){
+		Exam exam=examRepository.findByCode(code);
+		System.out.println(code);
+		return 	exam.getCreatePaper().getQuestions();
+	}
 	
 	
 

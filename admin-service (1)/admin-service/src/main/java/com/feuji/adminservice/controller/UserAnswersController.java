@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -23,8 +24,10 @@ public class UserAnswersController {
 	@PostMapping("/saveanswer")
 	public HttpStatus addPaper(@RequestBody UserAnswers userAnswers)
 	{
-		
-		userAnswersService.saveAnswer(userAnswers);
+		Long eid=userAnswers.getExam().getId();
+		Long qid=userAnswers.getQuestion().getId();
+		Long uid=userAnswers.getUser().getId();
+		userAnswersService.saveAnswer(userAnswers,eid,qid,uid);
 		return HttpStatus.OK;
 	}
 	
