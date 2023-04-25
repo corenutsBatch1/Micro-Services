@@ -37,5 +37,10 @@ public class UserAnswersController {
 		return userAnswersService.getAnswers();
 	}
 	
+	@GetMapping("/getanswers/{uid}")
+	public List<UserAnswers> getUserAnswers(@PathVariable Long uid)
+	{
+		return userAnswersService.getUserAnswers(uid);
+	}
 
 }
