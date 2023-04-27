@@ -26,20 +26,20 @@ public class Exam {
     private CreatePaper createPaper;
 
 
-    @OneToOne(mappedBy = "exam", cascade = CascadeType.ALL)
-    private Marks marks;
+//    @OneToOne(mappedBy = "exam", cascade = CascadeType.ALL)
+//    private Marks marks;
     
     private int examDuration;
     public Exam() {
     }
 
-    public Exam(String name, String code, LocalDateTime startTime, LocalDateTime endTime, CreatePaper createPaper, Marks marks,int examDuration) {
+    public Exam(String name, String code, LocalDateTime startTime, LocalDateTime endTime, CreatePaper createPaper,int examDuration) {
         this.name = name;
         this.code = code;
         this.startTime = startTime;
         this.endTime = endTime;
         this.createPaper = createPaper;
-        this.marks = marks;
+       // this.marks = marks;
         this.examDuration=examDuration;
     }
     
@@ -100,12 +100,12 @@ public class Exam {
         this.createPaper = createPaper;
     }
 
-    public Marks getMarks() {
-        return marks;
-    }
-
-    public void setMarks(Marks marks) {
-        this.marks = marks;
-    }
+//    public Marks getMarks() {
+//        return marks;
+//    }
+//
+//    public void setMarks(Marks marks) {
+//        this.marks = marks;
+//    }
 }
 
