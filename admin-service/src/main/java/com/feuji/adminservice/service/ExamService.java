@@ -4,16 +4,16 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import com.feuji.adminservice.repo.CreatePaperRepository;
 import com.feuji.adminservice.repo.ExamRepository;
 import com.feuji.adminservice.repo.QuestionRepository;
 import com.feuji.commonmodel.CreatePaper;
 import com.feuji.commonmodel.Exam;
-import com.feuji.commonmodel.Question;
 import com.feuji.commonmodel.Subject;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
 
 @Service

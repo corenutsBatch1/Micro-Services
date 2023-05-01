@@ -10,11 +10,9 @@ import org.springframework.web.client.RestTemplate;
 
 import com.feuji.adminservice.repo.CodingQuestionRepository;
 import com.feuji.adminservice.repo.ExamRepository;
-import com.feuji.adminservice.repo.QuestionRepository;
 import com.feuji.adminservice.repo.UserCodeRepository;
 import com.feuji.commonmodel.CodingQuestion;
 import com.feuji.commonmodel.Exam;
-import com.feuji.commonmodel.Question;
 import com.feuji.commonmodel.User;
 import com.feuji.commonmodel.UserCode;
 

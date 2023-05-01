@@ -1,12 +1,8 @@
 package com.feuji.commonmodel;
 
 import java.io.Serializable;
-import java.sql.Blob;
-
-import org.springframework.core.serializer.Serializer;
 
 import jakarta.persistence.CascadeType;
-import jakarta.persistence.Convert;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;

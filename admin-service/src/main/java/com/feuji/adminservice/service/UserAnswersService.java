@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.web.client.RestTemplateBuilder;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
@@ -74,6 +75,11 @@ private RestTemplate restTemplate;
 	{
 		
 		return userAnswersRepository.findAllByUserIdAndExamId(uid,eid);
+	}
+	
+	public HttpStatus deleteUserAnswer(Long qid,Long uid)
+	{
+		return userAnswersRepository.deleteByQuestionIdAndUserId(qid,uid);
 	}
 
 }

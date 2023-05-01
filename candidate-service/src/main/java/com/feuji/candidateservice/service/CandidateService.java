@@ -1,7 +1,5 @@
 package com.feuji.candidateservice.service;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.web.client.RestTemplateBuilder;
@@ -9,7 +7,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 import com.feuji.candidateservice.repo.CandidateRepository;
-import com.feuji.commonmodel.User;
 import com.feuji.commonmodel.UserAnswers;
 
 @Service
