@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -13,6 +14,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.feuji.adminservice.service.UserAnswersService;
 import com.feuji.commonmodel.UserAnswers;
+
+import jakarta.transaction.Transactional;
 
 @RestController
 @CrossOrigin("*")
@@ -49,5 +52,12 @@ public class UserAnswersController {
 		return userAnswersService.getanswers(uid,eid);
 	}
 	
+	@Transactional
+	@DeleteMapping("/deleteAnswer/{qid}/{uid}")
+	public HttpStatus deleteUserAnswer(@PathVariable Long qid,@PathVariable Long uid)
+	{
+		userAnswersService.deleteUserAnswer(qid,uid);
+		return HttpStatus.OK;
+	}
 
 }
