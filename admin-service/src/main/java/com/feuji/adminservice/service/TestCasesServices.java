@@ -22,7 +22,8 @@ public class TestCasesServices {
 	private CodingQuestionRepository codingQuestionRepository;
 	
 
-	public void addTestCases(TestCases testCases, Long qid) {
+public void addTestCases(TestCases testCases, Long qid) {
+
 		
 		CodingQuestion codingQuestion = codingQuestionRepository.findById(qid).get();
 //		testCasesList.stream().forEach((testCases) ->{
@@ -30,8 +31,10 @@ public class TestCasesServices {
 //										testCasesRepository.save(testCases);
 //										});
 		testCases.setCodingQuestion(codingQuestion);
+
 		testCases.setStatus("active");
 		testCasesRepository.save(testCases);
+
 	}
 	
 	public List<TestCases> getAllTestCases(Long id) {
