@@ -2,6 +2,9 @@ package com.feuji.userservice.service;
 
 import java.util.List;
 import java.util.stream.Collectors;
+import com.feuji.commonmodel.User;
+import com.feuji.userservice.repository.UserRepository;
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -37,7 +40,7 @@ public class UserService {
 		System.out.print(user.getEmail() + "   " + user.getPassword());
 		User userinfo = userRepository.findByEmailAndPassword(user.getEmail(), user.getPassword());
 
-		if (userinfo != null) {
+		if (userinfo != null && userinfo.getStatus().equalsIgnoreCase("active")) {
 			return userinfo;
 		} else {
 			return null;
@@ -66,11 +69,10 @@ public class UserService {
 		return userRepository.findById(user.getId()).get();
 	}
 
+
 	public List<User> fetchAllUsers() {
 		List<User> users = userRepository.findAll().stream().filter(e->e.getRole().equals(Role.USER))
 				.collect(Collectors.toList());
-		System.out.println("======================");
-		System.out.println(users.size());
 		return users;
 	}
 

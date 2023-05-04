@@ -28,7 +28,7 @@ public class UserController {
 		 if(user.getRole()==null) {
 		    	user.setRole(Role.USER);
 		    }
-		       
+		     user.setStatus("active");  
 		return userService.createUser(user);
 	}
 
