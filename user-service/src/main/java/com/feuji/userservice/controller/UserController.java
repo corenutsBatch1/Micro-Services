@@ -1,5 +1,7 @@
 package com.feuji.userservice.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -46,6 +48,11 @@ public class UserController {
 	@PostMapping(value = "/getUserById")
 	public User getUserById(User user) {
 		return userService.getUser(user);	
+	}
+	
+	@GetMapping(value = "/getallusers")
+	public List<User> fetchAllUsers(){
+		return userService.fetchAllUsers();
 	}
 
 }
