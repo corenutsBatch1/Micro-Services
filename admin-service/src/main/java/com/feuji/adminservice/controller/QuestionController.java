@@ -1,6 +1,5 @@
 package com.feuji.adminservice.controller;
 
-
 import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -29,47 +28,48 @@ import com.feuji.adminservice.helper.JavaToExcel;
 import com.feuji.adminservice.service.QuestionService;
 import com.feuji.commonmodel.Question;
 
-
 @RestController
 @CrossOrigin("*")
 public class QuestionController {
 	@Autowired
 	private QuestionService questionService;
-	
+
 	@Autowired
 	private ExcelHelper excelHelper;
-	
+
 	@Autowired
 	private JavaToExcel javaToExcel;
-	
+
 	@PostMapping("/addquestion/{sid}")
 	public HttpStatus insertQuestion(@RequestBody Question question, @PathVariable Long sid) {
-		questionService.addquestion(question,sid);
+		questionService.addquestion(question, sid);
 		return HttpStatus.OK;
 	}
-	
+
 	@GetMapping("/getallquestions/{sid}")
-	public Set<Question> getAllQuestions(@PathVariable Long sid)
-	{
-		
+	public Set<Question> getAllQuestions(@PathVariable Long sid) {
+
 		return questionService.getAllQuestions(sid);
 	}
-	
+
 	@PutMapping("/updatequestion")
-	public Question updateQuestion(@RequestBody Question question){
-		
+	public Question updateQuestion(@RequestBody Question question) {
+
 		return questionService.updatequestions(question);
 	}
+
 	@GetMapping("/getquestionbyid/{id}")
 	public Question getQuestionById(@PathVariable Long id) {
 		return questionService.getQuestionById(id);
-		
+
 	}
+
 	@DeleteMapping("/deleteQuestion/{id}")
 	public HttpStatus deleteQuestion(@PathVariable Long id) {
 		questionService.deleteQuestionById(id);
 		return HttpStatus.OK;
 	}
+
 	 @PostMapping("/questions/upload")
 		public ResponseEntity<String> uploadExcel(@RequestParam("file") MultipartFile file,HttpServletResponse response) throws IOException
 		{
@@ -122,5 +122,6 @@ public class QuestionController {
 	 
 	
 	
+
 
 }
