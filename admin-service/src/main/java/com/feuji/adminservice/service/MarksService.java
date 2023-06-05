@@ -19,6 +19,9 @@ public class MarksService {
 	private ExamRepository examRepository;
 	@Autowired
 	private MarksRepository marksRepository;
+	
+	@Autowired
+	private ExamRepository examRepository;
 
 	public void addMarks(Marks marks) {
 		Marks existingMarks = marksRepository.findByUserIdAndExamId(marks.getUser().getId(), marks.getExam().getId());
