@@ -91,23 +91,30 @@ public class QuestionController {
 				 return ResponseEntity.ok().body("please upload excel file only");
 			 }
 			
-			return ResponseEntity.ok("issue");
+			return ResponseEntity.badRequest().body("issue");
 		}
 	 
-	 public void exportToExcel(HttpServletResponse response) throws IOException {
-	        response.setContentType("application/octet-stream");
+	 public boolean exportToExcel(HttpServletResponse response) throws IOException {
+		 List<Question> listerrorQuestions = excelHelper.errorQuestions();
+		 if(listerrorQuestions.size()!=0) {
+		  response.setContentType("application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
 	        DateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd_HH:mm:ss");
 	        String currentDateTime = dateFormatter.format(new Date());
 	         
 	        String headerKey = "Content-Disposition";
 	        String headerValue = "attachment; filename=errors_" + currentDateTime + ".xlsx";
-	        response.setHeader(headerKey, headerValue);
-	         
-	        List<Question> listerrorQuestions = excelHelper.errorQuestions();
+	        System.out.println(headerValue);
+	        response.setHeader(headerKey, headerValue);          
 	        JavaToExcel excelExporter = new JavaToExcel(listerrorQuestions);
 	         
 	        excelExporter.export(response);
 	        excelHelper.errorQuestions.clear();
+	        return true;
+	        }
+	        else {
+	        	return false;
+	        }
+	       
 	       
 	    }  
 	 
